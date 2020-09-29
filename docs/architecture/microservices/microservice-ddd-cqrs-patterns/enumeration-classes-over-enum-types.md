@@ -36,7 +36,7 @@ public abstract class Enumeration : IComparable
                                          BindingFlags.Static |
                                          BindingFlags.DeclaredOnly);
 
-        return fields.Select(f => f.GetValue(null)).Cast<T>();
+        return fields.Select(f => f.GetValue(null)).Where(v => v is T).Cast<T>();
     }
 
     public override bool Equals(object obj)
